@@ -1,0 +1,25 @@
+district taluk hobali village survey number surnoc hissa no period year dependent dropdowns
+
+district id district name
+davanagere - 1D
+
+district id taluk id taluk name
+davanagere - 1d    -> 1D1d
+
+district id taluk id hobali id hobli name
+kasaba - 1k		-> 1D1d1k
+
+district id taluk id hobali id village id village name
+agasanakatte- 1a		-> 1D1d1k1a
+anekonda - 2a		-> 1D1d1k2a
+arasapura - 3a		-> 1D1d1k3a
+
+village id survey number ---> find any record in owners info if exist display hissa no and timeperiod
+
+village id survey number hissa no
+
+village id survey number hissa no timeperiod
+
+owners info
+
+village id survey number hissa no owner name crop name crop stage borewell or well or rain

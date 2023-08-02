@@ -1,0 +1,324 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Loan Approval prediction using machine learning </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href={% static 'style.css' %}>
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+<a href="#" class="logo"><i class="fas fa-hand-holding-usd"></i>LOAN APPROVAL</a>
+
+<nav class="navbar">
+    <ul>
+       
+        <li><a href="#home">home</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#service">service</a></li>
+        <li><a href="#project">project</a></li>
+        <li><a href="#donate">donate</a></li>
+        <li><a href="#prediction">prediction</a></li>
+    </ul>
+</nav>
+
+<div class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+<div class="content">
+
+    <h1>A Farmer is Magician who produce Money From Mud</h1>
+    <p>     Farmer only worry during the growing season,<br/> but towns people worry all the time    </p>
+    <a href="#"><button class="btn">explore.</button></a>
+
+</div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> about us <i class="fas fa-quote-right"></i> </h1>
+
+<div class="row">
+
+    <div class="image">
+        <img src="{% static 'images/about.jpg' %}" alt="">
+    </div>
+
+    <div class="content">
+        <h3 >We can save our farmers from rest of the life</h3>
+        <p>Farmers have so many problems related to small and fragmented land holdings, irrigation manures fertilizers and Biocides , soil erosion, Agricultural Marketing , Inadequate Transport and mainly Scarcity of Capital..</p>
+        <p>So in this project we are trying to help the farmers for getting loans from banks, we creating agricultural loan approval prediction system project using machine learning in this ‘we are helping to provide loans, by guiding the farmers like which bank will provide loans to you and what are the documents required to get approve in that bank’ in this way this project is usefull to farmers to solve there financial problems.  </p>
+       
+
+        <a href="#"><button class="btn">learn more</button></a>
+    </div>
+
+</div>
+
+<div class="box-container">
+
+    <div class="box">
+        <i class="fas fa-users"></i>
+        <h3>500+</h3>
+        <p>volunteers</p>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>1300+</h3>
+        <p>loans taken</p>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-hands-helping"></i>
+        <h3>450+</h3>
+        <p>Farmers benifited</p>
+    </div>
+
+   
+
+</div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- service section starts  -->
+
+<section class="service" id="service">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> our services <i class="fas fa-quote-right"></i> </h1>
+
+<div class="box-container">
+
+    <div class="box">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>loan Prediction</h3>
+        <p>we can predict loans for farmers,whether they will get or not by looking there details .  </p>
+        
+    </div>
+
+  
+    
+
+    
+
+</div>
+
+</section>
+
+<!-- service section ends -->
+
+<!-- project section starts  -->
+
+
+
+<section class="project" id="project">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> our projects <i class="fas fa-quote-right"></i> </h1>
+
+<div class="box-container">
+
+    <div class="box">
+        <img src="{% static 'images/pic1.jpeg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/pic2.jpeg' %}">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/pic3.jpeg' %}" alt="">
+        <div class="icons">
+            <a style="--i:1;" href="#" class="fas fa-heart"></a>
+            <a style="--i:2;" href="#" class="fas fa-share"></a>
+            <a style="--i:3;" href="#" class="fas fa-comment"></a>
+        </div>
+    </div>
+
+   
+
+   
+
+</div>
+
+</section>
+
+<!-- project section ends -->
+
+<!-- donate section starts  -->
+
+<section class="donate" id="donate">
+
+<h1 class="heading"> <i class="fas fa-quote-left"></i> donate us <i class="fas fa-quote-right"></i> </h1>
+
+<div class="video-container">
+    <video src="{% static 'images/backvideo.mp4' %}" loop autoplay muted></video>
+</div>
+
+<div class="form-container">
+
+    <form action="">
+
+        <div class="inputBox">
+            <input type="text" placeholder="first name">
+            <input type="text" placeholder="last name">
+        </div>
+
+        <div class="inputBox">
+            <input type="email" placeholder="enter your email">
+            <select name="" id="">
+                <option value="" selected disabled>donation amount</option>
+                <option value="$5">$5</option>
+                <option value="$10">$10</option>
+                <option value="$15">$15</option>
+                <option value="$20">$20</option>
+            </select>
+        </div>
+
+        <textarea name="" id="" cols="30" rows="10" placeholder="message ( optional )"></textarea>
+
+        <input type="submit" class="btn">
+
+    </form>
+
+</div>
+
+</section>
+
+<!-- donate section ends -->
+
+<!-- prediction section starts  -->
+
+<section class="prediction" id="prediction">
+    
+<h1 class="heading"> <i class="fas fa-quote-left"></i> Prediction <i class="fas fa-quote-right"></i> </h1>
+
+<div class="video-container">
+    <video src="{% static 'images/pridictvideo.mp4' %}" loop autoplay muted></video>
+</div>
+<iframe src="predictpage" frameborder="0" width="500px" height="200px"></iframe>
+
+
+      
+        
+
+</section>
+
+<!-- prediction section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Footer Design</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="project/css.footer/style.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    </head>
+    <body>
+    
+      <footer class="footer">
+           <div class="container">
+               <div class="row">
+                   <div class="footer-col">
+                       <h4>Green</h4>
+                      <ul>
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#about">about</a></li>
+                        <li><a href="#service">service</a></li>
+                        <li><a href="#project">project</a></li>
+                        <li><a href="#donate">donate</a></li>
+                        <li><a href="#prediction">prediction</a></li>
+                    </ul>
+                   </div>
+                 
+                   <div class="footer-col">
+                       <h4>follow us</h4>
+                       <div class="social-links">
+                           <a href="#"><i class="fab fa-facebook-f"></i></a>
+                           <a href="#"><i class="fab fa-twitter"></i></a>
+                           <a href="#"><i class="fab fa-instagram"></i></a>
+                           <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+      </footer>
+    
+    </body>
+    </html>
+    
+
+
+<h1 class="credit">created by <span>subramanyam D P</span> | all rights reserved. </h1>
+
+</section>
+
+
+
+
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

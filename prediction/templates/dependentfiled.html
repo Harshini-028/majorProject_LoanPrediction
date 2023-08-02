@@ -1,0 +1,396 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Agricultural Loan Approval prediction using machine learning </title>
+    <style>
+        .body{
+            box-sizing: border-box;
+        }
+        .title{
+            display: inline-block;
+            height: 100px;
+            border-radius: 4px;
+            border: solid 0.3px #e7e7e7;
+        }
+        .heading{
+            display: inline-block !important;
+            color: #337ab7;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 100;
+            font-size: 30px;
+        }
+        .sub_heading{
+            color: #337ab7;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: large;
+        }
+        .button_bar{
+            height: 150px;
+            background-color: #fff;
+        }
+        .button_bar input{
+            margin-top: 30px;
+        }
+        .surevy_num{
+            height: auto !important;
+        }
+        .survey{
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .fields{
+           display: inline-block;
+           border-radius: 4px;
+            border: solid 0.3px #e7e7e7;  
+            background-color: white;
+            height: auto;
+        }
+        .footer{
+            position: fixed;
+            width: 100%;
+            bottom: 0%;
+            
+            border-radius: 4px;
+            border: solid 0.3px #e7e7e7;  
+            background-color: white;
+        }
+        .footer p{
+            color: #337ab7;
+            font-size: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid bg-light p-0">
+        <div class="row title w-100 m-0">
+            <div class="row">
+                <div class="col-1">
+                    <img src="{% static 'images/logo.jpg' %}" alt="logo" height="70px" width="70px"/>
+                </div>
+                <div class="col-11">
+                    <span class="heading">Bhoomi Online | Land Records | view </span>
+                </div>
+            </div>
+            
+            
+            
+            <h4 class="sub_heading">Records of Rights, Tenancy and Crops(RTC) Form 16 | Mutation Register | Mutations Status</h4>
+        </div>
+        <div class="button_bar ">
+            <input type="button" value="Current year" style="width: 150px; background-color: #337ab7;border-color: #2e6da4;border-radius: 4px;color: white; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="Old year" style="width: 120px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="MR" style="width: 40px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="Mutation Status" style="width: 150px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="Khata Extract" style="width: 150px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="Survey Document" style="width: 150px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="Akarband" style="width: 100px; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+            <input type="button" value="https://rtc.karnataka.gov.in/You can get the original digitally signed RTC and MR at rtc.karnataka.gov.in" style="width: auto; background-color: white; border-radius: 4px; border: 0.5px solid rgb(101, 99, 99);">
+        </div>
+        <div class="bg-light title surevy_num w-100">
+            <h5 class="survey m-3 m-0 p-0">Select survey number</h5>
+        </div>
+        <div class="container-fluid m-0 p-0 " style="background-color: #fff;">
+             <form action="findPahani" method="post" >
+            {% csrf_token %}
+            <div class="row " style="margin-left:10px; margin-top: 10px; background: #fff;">
+            <div class="col-sm-2">
+                <label for="district">District</label>
+                        <select class="form-select" aria-label="Default select example" id="district" name="district" onchange="districtfield()">
+                            <option selected>Choose District</option>
+                            {% for i in district %}
+                                <option value="{{i.id}}" {% if request.GET.district == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                 <label for="taluk">Taluk</label>
+                        <select class="form-select" aria-label="Default select example" id="taluk" name="taluk" onchange="talukfield()">
+                            <option selected>Choose Taluk</option>
+                            {% for i in taluk %}
+                                <option value="{{i.id}}" {% if request.GET.taluk == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="hobali">Hobali</label>
+                        <select class="form-select" aria-label="Default select example" id="hobali" name="hobali" onchange="hobalifield()">
+                            <option selected>Choose Hobali</option>
+                            {% for i in hobali %}
+                                <option value="{{i.id}}" {% if request.GET.hobali == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                 <label for="village">Village</label>
+                            <select class="form-select" aria-label="Default select example" id="village" name="village" onchange="villagefield()">
+                                <option selected>Choose Village</option>
+                                {% for i in village %}
+                                    <option value="{{i.id}}" {% if request.GET.village == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="village">Survey Number</label>
+                <select class="form-select" aria-label="Default select example" id="surveynum" name="surveynum" onchange="surveyfield()">
+                            <option selected>Choose Survey Number</option>
+                            {% for i in surveynum %}
+                                <option value="{{i.id}}" {% if request.GET.survey == i.id|lower %}selected{% endif %}>{{i.name}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                <div>.</div>  
+                <input type="button" class="btn btn-primary" value="Go" onclick="checkPahani()" style="width: 170px;">
+            </div>
+        </div>
+        <div class="row my-2" style="margin-left:10px; background: white;">
+            <div class="col-sm-2">
+                <label for="surnoc">Surnoc</label>
+                <select class="form-select" aria-label="Default select example" id="surnoc" name="surnoc" onchange="surnocfield()">
+                    <option selected>Select Surnoc</option>
+                    <option value="*">*</option>
+                        <!-- <option value="{{i.id}}" {% if request.GET.district == i.id|lower %}selected{% endif %}>{{i.name}}</option> -->
+                    
+                </select>
+            </div>
+            <div class="col-sm-2">
+                 <label for="hissa">Hissa </label>
+                        <select class="form-select" aria-label="Default select example" id="hissanum" name="hissanum" onchange="hissafield()">
+                            <option selected>Select Hissa</option>
+                            {% for i in hissanum %}
+                                <option value="{{i.id}}" {% if request.GET.hissa == i.id|lower %}selected{% endif %}>{{i.hissano}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-4">
+                 <label for="period">Period </label>
+
+                        <select class="form-select" aria-label="Default select example" id="period" name="period" onchange="periodfiled()">
+                            <option selected>Select Period</option>
+                            {% for i in period %}
+                                <option value="{{i.id}}">{{i.period}}</option>
+                            {% endfor %}
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="year">Year</label>
+                        <select class="form-select" aria-label="Default select example" id="year" >
+                            <option selected>Select Year</option>
+                            <option value="2022-23">2022-2023</option>
+                        </select>
+            </div>
+            <div class="col-sm-2">
+                  <div>.</div>  
+                <!-- <input type="button" class="btn btn-outline-primary" value="Fetch Details" style="width: 170px;"> -->
+                <!-- <a href="findPahani" class="btn btn-outline-primary" style="width: 170px;">etch Details</a> -->
+                 <button class="btn btn-outline-primary" style="width: 170px;" type="submit">
+                            <span >Fetch Details</span>
+                            
+                        </button>
+            </div>
+            
+        </div>
+        </form>
+        </div>
+        
+    </div>
+    <div class="row bg-light my-4">
+        <div class="col-6 mx-2">
+            <h5 class="survey m-3 m-0 p-0">Owner Detaills</h5>
+            <div class="bg-white">
+                {% if result != None %}
+                <table class="table table-bordered table-responsive" style="margin-left: 15px; width: 95%;">
+                    <tr >
+                        <td><b>Owner Name</b></td>
+                        <td><b>Extent</b></td>
+                        <td><b>Khata Number</b></td>
+                    </tr>
+                    {% for i in result%}
+                        <tr>
+                            <td>{{i.ownername}}</td>
+                            <td>{{i.extent}}</td>
+                            <td>{{i.khata}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>Crop Name : </b></td>
+                            <td>{{i.cropname}}</td>
+                        
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>Crop Stage :</b></td>
+                            <td>{{i.cropstage}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>Irrigation Source: </b></td>
+                            
+                            <td>{{i.irrigationsource}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        </div>
+        <!-- <div class="col-1"></div> -->
+        <div class="col-5 mx-2" style="margin-left: 10px;">
+            <h5 class="survey m-3 m-0 p-0">Detaills</h5>
+           {% if result != None %}
+             <div class="container mx-4 p-2" style=" border-radius: 4px;
+            border: solid 0.3px #e7e7e7;  
+            background-color: white;">
+                <div class="row m-0 p-0">
+                <div class="col-8 ">
+                    <p><b>Village: {{resvillage}}</b></p>
+
+                </div>
+                <div class="col-4 ">
+                    <p><b>Survey Number: {{ressurveynum}} </b></p>
+                    
+                </div>
+                <div class="row m-0 p-0">
+                <div class="col-8 ">
+                    <p><b>Surnoc : * </b></p>
+
+                </div>
+                <div class="col-4 ">
+                    <p><b>Hissa No : {{reshissanum}} </b></p>
+                    
+                </div>
+                <div>
+                    <p><b>Period : {{resperiod}} </b></p>
+                    
+                </div>
+                <div>
+                    <p><b>Year: 2022-23 </b></p>
+                    
+                </div>
+               <form action="getImage" method="get">
+                 <div>
+                    <a href="pahaniImage" value="submit" target="_blank" class="btn btn-primary">View</a>
+                </div>
+               </form>
+            </div>
+            </div>
+                </div>
+           {% endif %}
+    </div>
+ 
+    <div class="footer">
+        <p>Disclaimer : The information available on website is updated in all respect. Users may access the updated ROR details through online mode without any further requirement of visiting the department.</p>
+        
+        <p>
+            © 2023 -BHOOMI MONITORING CELL. All Rights Reserved.(247)
+        <br/>
+            Designed and Hosted by - BHOOMI MONITORING CELL
+        </p>
+
+    </div>
+    <div style="height: 150px;">
+
+    </div>
+<script>
+    
+    var x = document.getElementById("district").value;
+    if(x=="Choose District"){
+        document.getElementById("taluk").disabled =true;
+    }
+    x = document.getElementById("taluk").value;
+    if(x=="Choose Taluk"){
+        document.getElementById("hobali").disabled =true;
+    }
+    x = document.getElementById("hobali").value;
+    if(x=="Choose Hobali"){
+        document.getElementById("village").disabled =true;
+    }
+    x = document.getElementById("village").value;
+    if(x=="Choose Village"){
+        document.getElementById("surveynum").disabled =true;
+    }
+    // x = document.getElementById("surveynum").value;
+    // if(x=="Choose Survey Number"){
+    document.getElementById("surnoc").disabled =true;
+    // var surnoc = "{{flag}}";
+    // if(surnoc=="True"){
+    //     document.getElementById("surnoc").disabled =false;
+    // }
+        
+    // }
+    var hissa = "{{request.GET.hissa}}";
+    if(hissa){
+        
+        document.getElementById("surnoc").disabled=false;
+        document.getElementById("surnoc").value = "*";
+        document.getElementById("hissa").disabled=false;
+        document.getElementById("year").disabled=true;
+    }
+    x = document.getElementById("surnoc").value;
+    
+    if(x=="Select Surnoc"){
+        document.getElementById("hissanum").disabled =true;
+    }
+    x = document.getElementById("hissanum").value;
+    if(x=="Select Hissa"){
+        document.getElementById("period").disabled =true;
+    }
+    x = document.getElementById("period").value;
+    if(x=="Select Period"){
+        document.getElementById("year").disabled =true;
+    }
+    function districtfield(){
+       districtid = document.getElementById('district').value;
+       window.location = "/dependentfield?district="+districtid;
+    }
+    function talukfield(){
+       talukid = document.getElementById('taluk').value;
+       window.location = "/dependentfield?district="+'{{request.GET.district}}'+"&taluk="+talukid;
+    }
+    function hobalifield(){
+       hobaliid = document.getElementById('hobali').value;
+       window.location = "/dependentfield?district="+'{{request.GET.district}}'+"&taluk="+'{{request.GET.taluk}}'+"&hobali="+hobaliid;
+    }
+    function villagefield(){
+       villageid = document.getElementById('village').value;
+       window.location = "/dependentfield?district="+'{{request.GET.district}}'+"&taluk="+'{{request.GET.taluk}}'+"&hobali="+'{{request.GET.hobali}}'+"&village="+villageid;
+    }
+    function surveyfield(){
+       surveyid = document.getElementById('surveynum').value;
+       window.location = "/dependentfield?district="+'{{request.GET.district}}'+"&taluk="+'{{request.GET.taluk}}'+"&hobali="+'{{request.GET.hobali}}'+"&village="+'{{request.GET.village}}'+"&survey="+surveyid;
+    }
+    function surnocfield(){
+        document.getElementById("hissanum").disabled =false;
+    }
+    function periodfiled(){
+        document.getElementById("year").disabled=false;
+    }
+    function hissafield(){
+       hissaid = document.getElementById('hissanum').value;
+       window.location = "/dependentfield?district="+'{{request.GET.district}}'+"&taluk="+'{{request.GET.taluk}}'+"&hobali="+'{{request.GET.hobali}}'+"&village="+'{{request.GET.village}}'+"&survey="+'{{request.GET.survey}}'+"&hissa="+hissaid;
+    }
+    function checkPahani(){
+        
+        var data = "{{flag}}";
+        // alert(data);
+        if(data=="False"){
+            alert("No records found!");
+            window.location = "/dependentfield";
+        }else{
+            // window.location = "/?district="+'{{request.GET.district}}'+"&taluk="+'{{request.GET.taluk}}'+"&hobali="+'{{request.GET.hobali}}'+"&village="+'{{request.GET.village}}'+"&survey="+surveyid;
+            document.getElementById("surnoc").disabled=false;
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

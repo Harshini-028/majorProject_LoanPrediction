@@ -1,0 +1,103 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Loan Approval prediction using machine learning </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'images/style.css' %}">
+    <!--custom js file link-->
+
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+<a href="/" class="logo"><i class="fas fa-hand-holding-usd"></i>LOAN APPROVAL</a>
+
+<nav class="navbar">
+    <ul>
+       
+        <li><a href="/">home</a></li>
+        <li><a href="about" active>about</a></li>
+        <li><a href="services">service</a></li>
+        <!-- <li><a href="#project">project</a></li>         -->
+        <li><a href="dependentfield" target="_blank">Pahani Details</a></li>
+        <li><a href="prediction">prediction</a></li>
+    </ul>
+</nav>
+
+<div class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+
+
+<!-- service section starts  -->
+
+<!-- <section class="service" id="service">
+
+    <h1 class="heading"> <i class="fas fa-quote-left"></i> our services <i class="fas fa-quote-right"></i> </h1>
+    
+    <div class="box-container">
+        <a href="predict">    <div class="box">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h3>loan Prediction</h3>
+            <p>we can predict loans for farmers,whether they will get or not by looking there details .  </p>
+            
+        </div>
+    
+      
+    </a>
+    
+    
+        
+    
+    </div>
+    
+    </section>
+     -->
+    <!-- service section ends -->
+
+<!-- footer section starts  -->
+
+<section class="prediction" id="prediction">
+    
+    <h1 class="heading"> <i class="fas fa-quote-left"></i> Prediction <i class="fas fa-quote-right"></i> </h1>
+    
+    <div class="video-container">
+        <video src="{% static 'images/backvideo.mp4' %}" loop autoplay muted></video>
+    </div>
+    <iframe src="predict" frameborder="0" width="90%" height="900px" style="margin-left: 5%;"></iframe>
+    
+    
+          
+            
+    
+    </section>
+
+
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="./index.js"></script>
+</body>
+</html>
